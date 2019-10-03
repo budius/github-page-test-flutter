@@ -8,11 +8,14 @@ class MainView extends StatefulWidget {
   @override
   MainViewModel createState() => MainViewModel(title);
 
-  static Widget build(String title, List<int> items, VoidCallback onFabPressed) {
+  static Widget build(
+      String title, List<int> items, VoidCallback onFabPressed) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
-      ),
+          title: Text(
+        title,
+        style: TextStyle(fontFamily: 'Notable'),
+      )),
       body: ListView.builder(
         itemCount: items.length,
         padding: EdgeInsets.all(8.0),
@@ -21,7 +24,10 @@ class MainView extends StatefulWidget {
           int start = items[index];
           int end = new DateTime.now().millisecondsSinceEpoch;
           int diff = end - start;
-          return Text('entry $index -> $diff');
+          return Text(
+            'entry $index -> $diff',
+            style: TextStyle(fontFamily: 'RobotoMonoRegular'),
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(

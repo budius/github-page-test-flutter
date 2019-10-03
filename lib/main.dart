@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.grey,
+        fontFamily: 'RobotoRegular'
       ),
       home: MainView(title: 'Flutter Demo Home Page'),
     );
