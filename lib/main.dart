@@ -1,18 +1,21 @@
-import 'package:elapsed_time/main_view.dart';
+import 'routes_definition.dart';
 import 'package:flutter/material.dart';
+import 'service_locator.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  setupLocator();
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-        fontFamily: 'RobotoRegular'
-      ),
-      home: MainView(title: 'Flutter Demo Home Page'),
+      initialRoute: '/',
+      routes: routesDefinition(),
+      theme: ThemeData(primarySwatch: Colors.teal, fontFamily: 'RobotoRegular'),
     );
   }
 }

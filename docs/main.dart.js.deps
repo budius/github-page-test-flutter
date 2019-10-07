@@ -1,8 +1,13 @@
 file:///home/budius/Documents/code/flutter/elapsed_time/.dart_tool/flutter_build/7e344067ba969fb1ce4578f2d99f2670/main.dart
 file:///home/budius/Documents/code/flutter/elapsed_time/.packages
+file:///home/budius/Documents/code/flutter/elapsed_time/lib/item/item_model.dart
+file:///home/budius/Documents/code/flutter/elapsed_time/lib/item/item_view.dart
 file:///home/budius/Documents/code/flutter/elapsed_time/lib/main.dart
-file:///home/budius/Documents/code/flutter/elapsed_time/lib/main_view.dart
-file:///home/budius/Documents/code/flutter/elapsed_time/lib/main_view_model.dart
+file:///home/budius/Documents/code/flutter/elapsed_time/lib/main/main_model.dart
+file:///home/budius/Documents/code/flutter/elapsed_time/lib/main/main_view.dart
+file:///home/budius/Documents/code/flutter/elapsed_time/lib/model/item.dart
+file:///home/budius/Documents/code/flutter/elapsed_time/lib/routes_definition.dart
+file:///home/budius/Documents/code/flutter/elapsed_time/lib/service_locator.dart
 file:///home/budius/bin/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.14.11/lib/collection.dart
 file:///home/budius/bin/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.14.11/lib/src/algorithms.dart
 file:///home/budius/bin/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.14.11/lib/src/canonicalized_map.dart
@@ -23,6 +28,7 @@ file:///home/budius/bin/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.
 file:///home/budius/bin/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.14.11/lib/src/unmodifiable_wrappers.dart
 file:///home/budius/bin/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.14.11/lib/src/utils.dart
 file:///home/budius/bin/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.14.11/lib/src/wrappers.dart
+file:///home/budius/bin/flutter/.pub-cache/hosted/pub.dartlang.org/get_it-3.0.1/lib/get_it.dart
 file:///home/budius/bin/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.1.7/lib/meta.dart
 file:///home/budius/bin/flutter/.pub-cache/hosted/pub.dartlang.org/scoped_model-1.0.1/lib/scoped_model.dart
 file:///home/budius/bin/flutter/.pub-cache/hosted/pub.dartlang.org/typed_data-1.1.6/lib/typed_buffers.dart
