@@ -4,7 +4,6 @@ import 'service_locator.dart';
 
 void main() {
   setupLocator();
-
   runApp(MyApp());
 }
 

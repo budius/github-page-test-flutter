@@ -1,9 +1,9 @@
 import 'package:elapsed_time/model_provider.dart';
-import 'package:elapsed_time/main/main_bloc.dart';
 import 'package:elapsed_time/model/item.dart';
 import 'package:flutter/material.dart';
 
 import '../routes_definition.dart';
+import 'main_bloc.dart';
 
 class MainView extends StatelessWidget {
   @override
@@ -21,16 +21,10 @@ Widget buildAppBar(BuildContext context) {
   return AppBar(
       title: StreamBuilder<String>(
     stream: bloc.title,
-    builder: (context, snapshot) {
-      String title = "";
-      if (snapshot.data != null) {
-        title = snapshot.data;
-      }
-      return Text(
-        title,
-        style: TextStyle(fontFamily: 'RobotoBlack'),
-      );
-    },
+    builder: (context, snapshot) => Text(
+      snapshot.data == null ? "" : snapshot.data,
+      style: TextStyle(fontFamily: 'RobotoBlack'),
+    ),
   ));
 }
 

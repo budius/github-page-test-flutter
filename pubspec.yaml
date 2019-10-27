@@ -16,7 +16,6 @@ dependencies:
   flutter:
     sdk: flutter
   rxdart: ^0.22.3
-  scoped_model: ^1.0.1
   # dependency injection
   get_it: ^3.0.1
 

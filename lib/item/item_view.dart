@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:scoped_model/scoped_model.dart';
 
-import 'item_model.dart';
+import '../model_provider.dart';
+import 'item_bloc.dart';
 
 class ItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<ItemModel>(
-        model: ItemModel(ModalRoute.of(context).settings.arguments),
-        child: ScopedModelDescendant<ItemModel>(
-          builder: (context, child, model) => Scaffold(
-            body: Center(
-              child: Text(model.text),
-            ),
-          ),
-        ));
+    ItemBloc bloc = ModelProvider.getModel<ItemBloc>(context);
+    return StreamBuilder(
+      stream: bloc.text,
+      builder: (context, snapshot) => Scaffold(
+        body: Center(
+          child: Text(snapshot.data == null ? "" : snapshot.data),
+        ),
+      ),
+    );
   }
 }

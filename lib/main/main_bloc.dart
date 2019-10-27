@@ -1,45 +1,38 @@
-import 'dart:async';
 
 import 'package:elapsed_time/model/item.dart';
-import 'package:rxdart/subjects.dart';
+import 'package:flutter/widgets.dart';
+import 'package:rxdart/rxdart.dart';
 
-class MainData {
-  String title = "Hello Block";
-  final List<Item> items = initialItems(now);
-}
+import '../model_provider.dart';
+import 'main_model.dart';
 
-class MainBloc {
-  MainData data = MainData();
+class MainBloc extends ViewModel {
+  final MainModel model = MainModel();
 
   Stream<String> get title => _titleController.stream;
 
   Stream<List<Item>> get items => _itemsController.stream;
 
   final BehaviorSubject<List<Item>> _itemsController =
-      BehaviorSubject<List<Item>>();
+  BehaviorSubject<List<Item>>();
 
   final BehaviorSubject<String> _titleController = BehaviorSubject<String>();
 
   MainBloc() {
-    _titleController.add(data.title);
-    _itemsController.add(data.items);
+    debugPrint("Starting of the MainBlock");
+    _titleController.add(model.title);
+    _itemsController.add(model.items);
   }
 
   void addItem() {
-    int next = data.items.length;
-    data.items.add(Item(next, "I am $next", now));
-    _itemsController.add(data.items);
+    model.addItem();
+    _itemsController.add(model.items);
+  }
+
+  @override
+  void onDispose() {
+    debugPrint("Disposing of the MainBlock");
+    _titleController.sink.close();
+    _itemsController.sink.close();
   }
 }
-
-final int now = DateTime.now().millisecondsSinceEpoch;
-
-List<Item> initialItems(int now) => [
-      Item(0, "I am zero", now),
-      Item(1, "I am one", now + 1),
-      Item(2, "I am two", now + 2),
-      Item(3, "I am three", now + 3),
-      Item(4, "I am four", now + 4),
-      Item(5, "I am five", now + 5),
-      Item(6, "I am six", now + 6)
-    ];
