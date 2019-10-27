@@ -1,8 +1,7 @@
-
-import 'package:elapsed_time/model/item.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rxdart/rxdart.dart';
 
+import '../model/item.dart';
 import '../model_provider.dart';
 import 'main_model.dart';
 
@@ -14,7 +13,7 @@ class MainBloc extends ViewModel {
   Stream<List<Item>> get items => _itemsController.stream;
 
   final BehaviorSubject<List<Item>> _itemsController =
-  BehaviorSubject<List<Item>>();
+      BehaviorSubject<List<Item>>();
 
   final BehaviorSubject<String> _titleController = BehaviorSubject<String>();
 

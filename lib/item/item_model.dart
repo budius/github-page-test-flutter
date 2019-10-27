@@ -1,4 +1,4 @@
-import 'package:elapsed_time/model/item.dart';
+import '../model/item.dart';
 
 class ItemModel {
   final Item _item;

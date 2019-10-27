@@ -1,10 +1,10 @@
-import 'package:elapsed_time/item/item_bloc.dart';
-import 'package:elapsed_time/model_provider.dart';
 import 'package:flutter/material.dart';
 
+import 'main/main_bloc.dart';
+import 'model_provider.dart';
 import 'item/item_view.dart';
 import 'main/main_view.dart';
-import 'main/main_bloc.dart';
+import 'item/item_bloc.dart';
 
 class Routes {
   static String home = '/';

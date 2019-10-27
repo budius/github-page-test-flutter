@@ -1,7 +1,7 @@
-import 'package:elapsed_time/model_provider.dart';
-import 'package:elapsed_time/model/item.dart';
 import 'package:flutter/material.dart';
 
+import '../model/item.dart';
+import '../model_provider.dart';
 import '../routes_definition.dart';
 import 'main_bloc.dart';
 
