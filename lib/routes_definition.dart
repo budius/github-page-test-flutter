@@ -9,7 +9,7 @@ import 'package:elapsed_time/screens/item_create/view.dart';
 import 'package:elapsed_time/screens/item_list/bloc.dart';
 import 'package:elapsed_time/screens/item_list/view.dart';
 
-import 'model_provider.dart';
+import 'package:elapsed_time/model_provider.dart';
 
 class Routes {
   static String home = '/';
