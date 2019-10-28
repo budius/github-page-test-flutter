@@ -55,7 +55,7 @@ class ItemCreateBloc extends ViewModel {
   void add() {
     ElapsedItem item = ElapsedItem(Uuid().v4(), nameController.text,
         descriptionController.text, _currentSelection);
-    DataStorage storage = locator.get();
+    DataStorage storage = locator.get<DataStorage>();
     storage.addItem(item);
   }
 
