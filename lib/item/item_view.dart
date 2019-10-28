@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model_provider.dart';
+import 'package:elapsed_time/model_provider.dart';
 import 'item_bloc.dart';
 
 class ItemView extends StatelessWidget {

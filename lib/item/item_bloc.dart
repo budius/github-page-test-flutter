@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:rxdart/subjects.dart';
-import '../model_provider.dart';
-import '../model/item.dart';
+import 'package:elapsed_time/model_provider.dart';
+import 'package:elapsed_time/model/item.dart';
 import 'item_model.dart';
 
 class ItemBloc extends ViewModel {

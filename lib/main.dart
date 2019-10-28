@@ -1,5 +1,5 @@
-import 'routes_definition.dart';
 import 'package:flutter/material.dart';
+import 'routes_definition.dart';
 import 'service_locator.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       initialRoute: '/',
-      routes: routesDefinition(),
+      routes: routesDefinition,
       theme: ThemeData(primarySwatch: Colors.teal, fontFamily: 'RobotoRegular'),
     );
   }

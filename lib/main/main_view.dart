@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../model/item.dart';
-import '../model_provider.dart';
-import '../routes_definition.dart';
+import 'package:elapsed_time/model/item.dart';
+import 'package:elapsed_time/model_provider.dart';
+import 'package:elapsed_time/routes_definition.dart';
 import 'main_bloc.dart';
 
 class MainView extends StatelessWidget {

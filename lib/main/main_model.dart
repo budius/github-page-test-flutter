@@ -1,4 +1,4 @@
-import '../model/item.dart';
+import 'package:elapsed_time/model/item.dart';
 
 class MainModel {
   String title = "Hello Block";

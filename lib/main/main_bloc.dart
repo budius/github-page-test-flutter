@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:rxdart/rxdart.dart';
 
-import '../model/item.dart';
-import '../model_provider.dart';
+import 'package:elapsed_time/model/item.dart';
+import 'package:elapsed_time/model_provider.dart';
 import 'main_model.dart';
 
 class MainBloc extends ViewModel {
