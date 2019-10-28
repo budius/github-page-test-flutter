@@ -12,9 +12,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      themeMode: ThemeMode.dark,
       initialRoute: '/',
       routes: routesDefinition,
-      theme: ThemeData(primarySwatch: Colors.teal, fontFamily: 'RobotoRegular'),
+      theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          brightness: Brightness.dark,
+          fontFamily: 'RobotoRegular'),
     );
   }
 }

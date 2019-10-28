@@ -12,52 +12,72 @@ class ItemCreateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ItemCreateBloc bloc = _bloc(context);
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Text("Name"),
-          TextField(),
-          Text("Description"),
-          TextField(),
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Center(
-                  child: RaisedButton(
-                    child: StreamBuilder<String>(
-                        stream: bloc.date,
-                        builder: (context, snapshot) {
-                          return Text(
-                              snapshot.data == null ? "" : snapshot.data);
-                        }),
-                    onPressed: () => _showDatePicker(context),
+    return Container(
+      constraints: BoxConstraints(maxWidth: 80),
+      padding: EdgeInsets.all(24),
+      child: Form(
+        child: Column(
+          children: <Widget>[
+            TextFormField(
+              controller: bloc.nameController,
+              maxLength: 40,
+              maxLines: 1,
+              decoration: const InputDecoration(
+                  icon: Icon(Icons.surround_sound),
+                  hintText: "Short name, max 40 chars",
+                  labelText: "Name"),
+            ),
+            TextFormField(
+              controller: bloc.descriptionController,
+              maxLength: 280,
+              minLines: 3,
+              maxLines: 5,
+              decoration: const InputDecoration(
+                  icon: Icon(Icons.camera_alt),
+                  hintText:
+                      "(Optional)\nWhy is that point in time relevant, max 2 tweets",
+                  labelText: "Description"),
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Center(
+                    child: RaisedButton(
+                      child: StreamBuilder<String>(
+                          stream: bloc.date,
+                          builder: (context, snapshot) {
+                            return Text(
+                                snapshot.data == null ? "" : snapshot.data);
+                          }),
+                      onPressed: () => _showDatePicker(context),
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Center(
-                  child: RaisedButton(
-                    child: StreamBuilder<String>(
-                        stream: bloc.time,
-                        builder: (context, snapshot) {
-                          return Text(
-                              snapshot.data == null ? "" : snapshot.data);
-                        }),
-                    onPressed: () => _showTimePicker(context),
+                Expanded(
+                  child: Center(
+                    child: RaisedButton(
+                      child: StreamBuilder<String>(
+                          stream: bloc.time,
+                          builder: (context, snapshot) {
+                            return Text(
+                                snapshot.data == null ? "" : snapshot.data);
+                          }),
+                      onPressed: () => _showTimePicker(context),
+                    ),
                   ),
-                ),
-              )
-            ],
-          ),
-          RaisedButton(
-            child: Text("Add"),
-            onPressed: () {
-              /* TODO */
-            },
-          ),
-        ],
+                )
+              ],
+            ),
+            RaisedButton(
+              child: Text("Add"),
+              onPressed: () {
+                bloc.add();
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
-      // floatingActionButton: buildFab(context),
     );
   }
 }

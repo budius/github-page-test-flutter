@@ -17,6 +17,10 @@ class ItemListBloc extends ViewModel {
     _items.add(dataStorage.allItems);
   }
 
+  void update() {
+    _items.add(dataStorage.allItems);
+  }
+
   @override
   void onDispose() {
     _items.close();

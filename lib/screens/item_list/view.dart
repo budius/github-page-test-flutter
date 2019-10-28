@@ -23,18 +23,20 @@ class ItemListView extends StatelessWidget {
   }
 }
 
-Widget buildAppBar(BuildContext context) => AppBar(
+Widget buildAppBar(BuildContext context) =>
+    AppBar(
       title: Text("Hello Elapsed Time"),
     );
 
 Widget buildFab(BuildContext context) {
   return FloatingActionButton(
-      onPressed: () {
-        showModalBottomSheet(
+      onPressed: () async {
+        await showModalBottomSheet(
             context: context,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
             builder: routesDefinition[Routes.create]);
+        _bloc(context).update();
       },
       tooltip: 'Add new item',
       child: Icon(Icons.add));
@@ -67,13 +69,13 @@ Widget buildListFromItems(BuildContext context, List<ElapsedItem> items) {
       padding: EdgeInsets.all(16.0),
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
-            //      onTap: () => {},
+          //      onTap: () => {},
             child: Padding(
-          padding: EdgeInsets.all(4.0),
-          child: Text(
-            "${items[index].shortName} - ${items[index].description}",
-            style: TextStyle(fontSize: 16.0),
-          ),
-        ));
+              padding: EdgeInsets.all(4.0),
+              child: Text(
+                "${items[index].shortName} - ${items[index].description}",
+                style: TextStyle(fontSize: 16.0),
+              ),
+            ));
       });
 }
