@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'routes_definition.dart';
-import 'service_locator.dart';
+import 'package:elapsed_time/routes_definition.dart';
+import 'package:elapsed_time/service_locator.dart';
 
 void main() {
   setupLocator();

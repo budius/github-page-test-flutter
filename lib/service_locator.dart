@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'data_storage.dart';
+import 'package:elapsed_time/data_storage.dart';
 
 GetIt locator = GetIt.instance;
 

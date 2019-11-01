@@ -2,7 +2,7 @@ import 'package:elapsed_time/model_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'bloc.dart';
+import 'package:elapsed_time/screens/item_create/bloc.dart';
 
 ItemCreateBloc _bloc(BuildContext context) {
   return ModelProvider.getModel(context);
