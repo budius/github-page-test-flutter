@@ -3,14 +3,7 @@ file:///home/budius/Documents/code/flutter/elapsed_time/.packages
 file:///home/budius/Documents/code/flutter/elapsed_time/lib/data_storage.dart
 file:///home/budius/Documents/code/flutter/elapsed_time/lib/main.dart
 file:///home/budius/Documents/code/flutter/elapsed_time/lib/model/elapsed_item.dart
-file:///home/budius/Documents/code/flutter/elapsed_time/lib/model/item.dart
 file:///home/budius/Documents/code/flutter/elapsed_time/lib/model_provider.dart
-file:///home/budius/Documents/code/flutter/elapsed_time/lib/old/item/item_bloc.dart
-file:///home/budius/Documents/code/flutter/elapsed_time/lib/old/item/item_model.dart
-file:///home/budius/Documents/code/flutter/elapsed_time/lib/old/item/item_view.dart
-file:///home/budius/Documents/code/flutter/elapsed_time/lib/old/main/main_bloc.dart
-file:///home/budius/Documents/code/flutter/elapsed_time/lib/old/main/main_model.dart
-file:///home/budius/Documents/code/flutter/elapsed_time/lib/old/main/main_view.dart
 file:///home/budius/Documents/code/flutter/elapsed_time/lib/routes_definition.dart
 file:///home/budius/Documents/code/flutter/elapsed_time/lib/screens/item_create/bloc.dart
 file:///home/budius/Documents/code/flutter/elapsed_time/lib/screens/item_create/view.dart
