@@ -83,6 +83,7 @@ class ItemCreateView extends StatelessWidget {
 }
 
 void _showDatePicker(BuildContext context) async {
+  removeFocus(context);
   ItemCreateBloc bloc = _bloc(context);
   DateTime selection = await showDatePicker(
       context: context,
@@ -94,17 +95,13 @@ void _showDatePicker(BuildContext context) async {
 }
 
 void _showTimePicker(BuildContext context) async {
+  removeFocus(context);
   ItemCreateBloc bloc = _bloc(context);
   TimeOfDay selection =
       await showTimePicker(context: context, initialTime: bloc.initialTime);
   bloc.timeSelected(selection);
 }
 
-//Widget buildFab(BuildContext context) {
-//  return FloatingActionButton(
-//      onPressed: () {
-//        /* TODO */
-//      },
-//      tooltip: 'Add',
-//      child: Icon(Icons.add));
-//}
+void removeFocus(BuildContext context) {
+  FocusScope.of(context).requestFocus(new FocusNode());
+}

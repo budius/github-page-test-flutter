@@ -6,15 +6,15 @@ abstract class ViewModel {
 
 class ModelProvider<T extends ViewModel> extends StatefulWidget {
   final T model;
-  final Widget child;
+  final Widget view;
 
-  ModelProvider({@required this.model, @required this.child})
+  ModelProvider({@required this.model, @required this.view})
       : assert(model != null),
-        assert(child != null);
+        assert(view != null);
 
   @override
   State<StatefulWidget> createState() =>
-      ModelProviderState<T>(model: model, child: child);
+      ModelProviderState<T>(model: model, child: view);
 
   static T getModel<T>(BuildContext context) {
     return _InheritedModel.findPerType(context);

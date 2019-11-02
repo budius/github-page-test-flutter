@@ -14,9 +14,9 @@ class Routes {
 
 Map<String, WidgetBuilder> routesDefinition = {
   Routes.home: (context) =>
-      ModelProvider<ItemListBloc>(model: ItemListBloc(), child: ItemListView()),
+      ModelProvider<ItemListBloc>(model: ItemListBloc(), view: ItemListView()),
   Routes.create: (context) => ModelProvider<ItemCreateBloc>(
         model: ItemCreateBloc(),
-        child: ItemCreateView(),
+        view: ItemCreateView(),
       ),
 };
