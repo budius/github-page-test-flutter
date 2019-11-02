@@ -1,8 +1,6 @@
 import 'package:elapsed_time/routes_definition.dart';
-import 'package:elapsed_time/screens/item_create/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:elapsed_time/screens/item_create/view.dart';
 import 'package:elapsed_time/model_provider.dart';
 import 'package:elapsed_time/model/elapsed_item.dart';
 
@@ -23,8 +21,7 @@ class ItemListView extends StatelessWidget {
   }
 }
 
-Widget buildAppBar(BuildContext context) =>
-    AppBar(
+Widget buildAppBar(BuildContext context) => AppBar(
       title: Text("Hello Elapsed Time"),
     );
 
@@ -34,7 +31,7 @@ Widget buildFab(BuildContext context) {
         await showModalBottomSheet(
             context: context,
             shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
             builder: routesDefinition[Routes.create]);
         _bloc(context).update();
       },
@@ -67,15 +64,18 @@ Widget buildListFromItems(BuildContext context, List<ElapsedItem> items) {
   return ListView.builder(
       itemCount: items.length,
       padding: EdgeInsets.all(16.0),
-      itemBuilder: (BuildContext context, int index) {
-        return GestureDetector(
-          //      onTap: () => {},
-            child: Padding(
-              padding: EdgeInsets.all(4.0),
-              child: Text(
-                "${items[index].shortName} - ${items[index].description}",
-                style: TextStyle(fontSize: 16.0),
-              ),
-            ));
-      });
+      itemBuilder: (BuildContext context, int index) =>
+          itemBuilder(context, items[index]));
+}
+
+Widget itemBuilder(BuildContext context, ElapsedItem item) {
+  return GestureDetector(
+      //      onTap: () => {},
+      child: Padding(
+    padding: EdgeInsets.all(4.0),
+    child: Text(
+      "${item.shortName} - ${item.description}",
+      style: TextStyle(fontSize: 16.0),
+    ),
+  ));
 }
