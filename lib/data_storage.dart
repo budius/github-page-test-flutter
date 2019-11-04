@@ -17,7 +17,7 @@ class DataStorage {
 
   List<ElapsedItem> get allItems {
     List<ElapsedItem> list = _data.values.toList(growable: false);
-    list.sort((a, b) => a.id.compareTo(b.id));
+    list.sort((a, b) => a.instant.compareTo(b.instant));
     return list;
   }
 }

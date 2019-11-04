@@ -1,10 +1,11 @@
 import 'package:elapsed_time/routes_definition.dart';
+import 'package:elapsed_time/screens/item_list/view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:elapsed_time/model_provider.dart';
 import 'package:elapsed_time/model/elapsed_item.dart';
 
-import 'bloc.dart';
+import 'package:elapsed_time/screens/item_list/bloc.dart';
 
 ItemListBloc _bloc(BuildContext context) {
   return ModelProvider.getModel<ItemListBloc>(context);
@@ -61,21 +62,12 @@ Widget buildEmptyView(BuildContext context) {
 }
 
 Widget buildListFromItems(BuildContext context, List<ElapsedItem> items) {
-  return ListView.builder(
-      itemCount: items.length,
+  return GridView.builder(
       padding: EdgeInsets.all(16.0),
-      itemBuilder: (BuildContext context, int index) =>
-          itemBuilder(context, items[index]));
+      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 500, childAspectRatio: goldenRatio),
+      itemCount: items.length,
+      itemBuilder: (BuildContext context, int index) => CardItem(items[index]));
 }
 
-Widget itemBuilder(BuildContext context, ElapsedItem item) {
-  return GestureDetector(
-      //      onTap: () => {},
-      child: Padding(
-    padding: EdgeInsets.all(4.0),
-    child: Text(
-      "${item.shortName} - ${item.description}",
-      style: TextStyle(fontSize: 16.0),
-    ),
-  ));
-}
+double goldenRatio = 1.61803398875;

@@ -21,6 +21,10 @@ class ItemListBloc extends ViewModel {
     _items.add(dataStorage.allItems);
   }
 
+  static String mainCounterText(ElapsedItem item) {
+    return "${item.instant.difference(DateTime.now()).inMilliseconds}";
+  }
+
   @override
   void onDispose() {
     _items.close();
