@@ -30,7 +30,7 @@ class ItemListBloc extends ViewModel {
     if (diff.inDays.abs() > 365) {
       int years = diff.inDays ~/ 365;
       int days = diff.inDays - (years * 365);
-      return "$years years and $days days";
+      return "$years years and ${leadingZeros(days, 2)} days";
     } else {
       return null;
     }
@@ -42,7 +42,7 @@ class ItemListBloc extends ViewModel {
       int days = diff.inDays;
       int hours = diff.inHours - (days * 24);
       int minutes = diff.inMinutes - (days * 24 * 60) - (hours * 60);
-      return "$days days, $hours hours and $minutes minutes";
+      return "${leadingZeros(days, 2)} days, ${leadingZeros(hours, 2)} hours and ${leadingZeros(minutes, 2)} minutes";
     } else {
       return null;
     }
@@ -57,7 +57,11 @@ class ItemListBloc extends ViewModel {
         (hours * 60 * 60 * 1000) -
         (minutes * 60 * 1000) -
         (seconds * 1000);
-    return "$hours:$minutes:$seconds:$ms";
+    return "${leadingZeros(hours, 2)} hours, ${leadingZeros(minutes, 2)} minutes, ${leadingZeros(seconds, 2)} seconds, ${leadingZeros(ms, 3)} ms";
+  }
+
+  static String leadingZeros(int value, int size) {
+    return value.toString().padLeft(size, '0');
   }
 
   @override

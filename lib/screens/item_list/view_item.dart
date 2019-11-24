@@ -12,7 +12,13 @@ class CardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: AutoUpdateList(_item),
+      child: InkWell(
+        onTap: () => {},
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: AutoUpdateList(_item),
+        ),
+      ),
     );
   }
 }
@@ -31,7 +37,6 @@ class AutoUpdateList extends StatefulWidget {
 class AutoUpdateListState extends State<AutoUpdateList> {
   final ElapsedItem _item;
   Timer _timer;
-  List<String> _text;
 
   AutoUpdateListState(this._item);
 
@@ -51,35 +56,59 @@ class AutoUpdateListState extends State<AutoUpdateList> {
   }
 
   void _updateState() {
-    setState(() {
-      List<String> text = List();
-      text.add(_item.shortName);
-      if (_item.description != null) {
-        text.add(_item.description);
-      }
-      String years = ItemListBloc.elapsedToYears(_item);
-      if (years != null) {
-        text.add(years);
-      }
-      String days = ItemListBloc.elapsedToDays(_item);
-      if (days != null) {
-        text.add(days);
-      }
-      String hours = ItemListBloc.elapsedToHours(_item);
-      if (hours != null) {
-        text.add(hours);
-      }
-      _text = text;
-    });
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     List<Widget> columns = List();
-    for (int i = 0; i < _text.length; i++) {
-      columns.add(Text(_text[i]));
+    columns.add(
+      Padding(
+        padding: const EdgeInsets.only(bottom: 2.0),
+        child: Text(
+          _item.shortName,
+          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20.0),
+        ),
+      ),
+    );
+    if (_item.description != null) {
+      columns.add(Padding(
+        padding: const EdgeInsets.only(bottom: 2.0),
+        child: Text(
+          _item.description,
+          style: TextStyle(
+            fontWeight: FontWeight.w200,
+          ),
+        ),
+      ));
     }
+
+    columns.add(Padding(padding: EdgeInsets.only(bottom: 6.0)));
+
+    String years = ItemListBloc.elapsedToYears(_item);
+    if (years != null) {
+      columns.add(Padding(
+        padding: const EdgeInsets.only(bottom: 2.0),
+        child: Text(years),
+      ));
+    }
+    String days = ItemListBloc.elapsedToDays(_item);
+    if (days != null) {
+      columns.add(Padding(
+        padding: const EdgeInsets.only(bottom: 2.0),
+        child: Text(days),
+      ));
+    }
+    String hours = ItemListBloc.elapsedToHours(_item);
+    if (hours != null) {
+      columns.add(Padding(
+        padding: const EdgeInsets.only(bottom: 2.0),
+        child: Text(hours),
+      ));
+    }
+
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: columns,
     );
   }
