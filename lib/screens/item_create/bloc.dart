@@ -1,10 +1,8 @@
 import 'package:elapsed_time/data_storage.dart';
-import 'package:elapsed_time/model/elapsed_item.dart';
 import 'package:elapsed_time/model_provider.dart';
 import 'package:elapsed_time/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:uuid/uuid.dart';
 
 class ItemCreateBloc extends ViewModel {
   DateTime get earliestDate => DateTime.fromMillisecondsSinceEpoch(0);
@@ -52,11 +50,10 @@ class ItemCreateBloc extends ViewModel {
     _updateStreams(time: time);
   }
 
-  void add() {
-    ElapsedItem item = ElapsedItem(Uuid().v4(), nameController.text,
-        descriptionController.text, _currentSelection);
+  Future<void> add() async {
     DataStorage storage = locator.get<DataStorage>();
-    storage.addItem(item);
+    await storage.addItem(
+        nameController.text, descriptionController.text, _currentSelection);
   }
 
   @override

@@ -70,8 +70,8 @@ class ItemCreateView extends StatelessWidget {
             ),
             RaisedButton(
               child: Text("Add"),
-              onPressed: () {
-                bloc.add();
+              onPressed: () async {
+                await bloc.add();
                 Navigator.pop(context);
               },
             ),

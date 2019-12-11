@@ -14,11 +14,11 @@ class ItemListBloc extends ViewModel {
   Stream<List<ElapsedItem>> get items => _items.stream;
 
   ItemListBloc() {
-    _items.add(dataStorage.allItems);
+    update();
   }
 
-  void update() {
-    _items.add(dataStorage.allItems);
+  void update() async {
+    _items.add(await dataStorage.allItems);
   }
 
   static String mainCounterText(ElapsedItem item) {
