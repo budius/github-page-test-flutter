@@ -12,6 +12,7 @@ class CardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      key: ObjectKey(_item.id),
       child: InkWell(
         onTap: () => {},
         child: Padding(
