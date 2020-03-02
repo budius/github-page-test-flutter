@@ -6,7 +6,7 @@ import 'package:elapsed_time/model_provider.dart';
 import 'package:elapsed_time/service_locator.dart';
 
 class ItemListBloc extends ViewModel {
-  final DataStorage dataStorage = locator.get();
+  final DataStorage _dataStorage = locator.get();
 
   final BehaviorSubject<List<ElapsedItem>> _items =
       BehaviorSubject<List<ElapsedItem>>();
@@ -18,7 +18,7 @@ class ItemListBloc extends ViewModel {
   }
 
   void update() async {
-    _items.add(await dataStorage.allItems);
+    _items.add(await _dataStorage.allItems);
   }
 
   static String mainCounterText(ElapsedItem item) {
@@ -68,5 +68,10 @@ class ItemListBloc extends ViewModel {
   void onDispose() {
     _items.close();
     super.onDispose();
+  }
+
+  void remove(ElapsedItem item) async {
+    await _dataStorage.deleteItem(item.id);
+    update();
   }
 }

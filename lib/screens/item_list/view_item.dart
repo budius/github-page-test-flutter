@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 
 class CardItem extends StatelessWidget {
   final ElapsedItem _item;
+  final Function onTap;
 
-  const CardItem(this._item, {Key key}) : super(key: key);
+  const CardItem(this._item, this.onTap, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,18 @@ class CardItem extends StatelessWidget {
         onTap: () => {},
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: AutoUpdateList(_item),
+          child: Stack(
+            children: <Widget>[
+              Positioned(
+                  top: 0,
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: onTap,
+                    child: Icon(Icons.close),
+                  )),
+              AutoUpdateList(_item),
+            ],
+          ),
         ),
       ),
     );

@@ -49,7 +49,7 @@ Widget buildListFromBloc(BuildContext context) {
       if (count == 0) {
         return buildEmptyView(context);
       } else {
-        return buildListFromItems(context, snapshot.data);
+        return buildListFromItems(context, snapshot.data, bloc);
       }
     },
   );
@@ -61,13 +61,20 @@ Widget buildEmptyView(BuildContext context) {
   );
 }
 
-Widget buildListFromItems(BuildContext context, List<ElapsedItem> items) {
+Widget buildListFromItems(
+  BuildContext context,
+  List<ElapsedItem> items,
+  ItemListBloc bloc,
+) {
   return GridView.builder(
       padding: EdgeInsets.all(16.0),
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 500, childAspectRatio: goldenRatio),
       itemCount: items.length,
-      itemBuilder: (BuildContext context, int index) => CardItem(items[index]));
+      itemBuilder: (BuildContext context, int index) {
+        final item = items[index];
+        return CardItem(item, () => bloc.remove(item));
+      });
 }
 
 double goldenRatio = 1.61803398875;

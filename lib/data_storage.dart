@@ -40,6 +40,12 @@ class DataStorage {
     return _data[id];
   }
 
+  Future<void> deleteItem(String id) async {
+    await _loadCompleted.future;
+    await _prefs.remove(id);
+    _data.remove(id);
+  }
+
   Future<List<ElapsedItem>> get allItems async {
     await _loadCompleted.future;
     List<ElapsedItem> list = _data.values.toList(growable: false);
