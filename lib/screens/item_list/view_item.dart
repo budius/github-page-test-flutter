@@ -15,7 +15,7 @@ class CardItem extends StatelessWidget {
     return Card(
       key: ObjectKey(_item.id),
       child: InkWell(
-        onTap: () => {},
+        onTap: () {},
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Stack(
@@ -23,7 +23,7 @@ class CardItem extends StatelessWidget {
               Positioned(
                   top: 0,
                   right: 0,
-                  child: GestureDetector(
+                  child: InkResponse(
                     onTap: onTap,
                     child: Icon(Icons.close),
                   )),
