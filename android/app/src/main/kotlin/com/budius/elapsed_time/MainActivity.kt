@@ -1,4 +1,4 @@
-package com.example.elapsed_time
+package com.budius.elapsed_time
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
