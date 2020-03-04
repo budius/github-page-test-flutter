@@ -16,20 +16,17 @@ class CardItem extends StatelessWidget {
       key: ObjectKey(_item.id),
       child: InkWell(
         onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Stack(
-            children: <Widget>[
-              Positioned(
-                  top: 0,
-                  right: 0,
-                  child: InkResponse(
-                    onTap: onTap,
-                    child: Icon(Icons.close),
-                  )),
-              AutoUpdateList(_item),
-            ],
-          ),
+        child: Stack(
+          children: <Widget>[
+            Positioned(
+                top: 16,
+                right: 16,
+                child: InkResponse(
+                  onTap: onTap,
+                  child: Icon(Icons.close),
+                )),
+            AutoUpdateList(_item),
+          ],
         ),
       ),
     );
@@ -74,55 +71,85 @@ class AutoUpdateListState extends State<AutoUpdateList> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> columns = List();
-    columns.add(
-      Padding(
-        padding: const EdgeInsets.only(bottom: 2.0),
-        child: Text(
-          _item.shortName,
-          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20.0),
-        ),
-      ),
-    );
-    if (_item.description != null) {
-      columns.add(Padding(
-        padding: const EdgeInsets.only(bottom: 2.0),
-        child: Text(
-          _item.description,
-          style: TextStyle(
-            fontWeight: FontWeight.w200,
-          ),
-        ),
-      ));
-    }
+    List<Widget> w = List();
 
-    columns.add(Padding(padding: EdgeInsets.only(bottom: 6.0)));
+    double baseline = 40.0;
+
+    // title
+    w.add(Baseline(
+        baseline: baseline,
+        baselineType: TextBaseline.alphabetic,
+        child: Text(_item.shortName,
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.w600,
+              color: Color(0xf0ffffff),
+            ))));
+
+    // description
+    if (_validString(_item.description)) {
+      baseline += 24.0;
+      w.add(Baseline(
+          baseline: baseline,
+          baselineType: TextBaseline.alphabetic,
+          child: Text(_item.description,
+              style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w600,
+                color: Color(0xf0ffffff),
+              ))));
+    } else {
+      baseline += 8.0;
+    }
 
     String years = ItemListBloc.elapsedToYears(_item);
     if (years != null) {
-      columns.add(Padding(
-        padding: const EdgeInsets.only(bottom: 2.0),
-        child: Text(years),
-      ));
-    }
-    String days = ItemListBloc.elapsedToDays(_item);
-    if (days != null) {
-      columns.add(Padding(
-        padding: const EdgeInsets.only(bottom: 2.0),
-        child: Text(days),
-      ));
-    }
-    String hours = ItemListBloc.elapsedToHours(_item);
-    if (hours != null) {
-      columns.add(Padding(
-        padding: const EdgeInsets.only(bottom: 2.0),
-        child: Text(hours),
-      ));
+      baseline += 16.0;
+      w.add(Baseline(
+          baseline: baseline,
+          baselineType: TextBaseline.alphabetic,
+          child: Text(years,
+              style: TextStyle(
+                fontSize: 12.0,
+                fontWeight: FontWeight.w500,
+                color: Color(0xc0ffffff),
+              ))));
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: columns,
-    );
+    String days = ItemListBloc.elapsedToDays(_item);
+    if (days != null) {
+      baseline += 16.0;
+      w.add(Baseline(
+          baseline: baseline,
+          baselineType: TextBaseline.alphabetic,
+          child: Text(days,
+              style: TextStyle(
+                fontSize: 12.0,
+                fontWeight: FontWeight.w500,
+                color: Color(0xc0ffffff),
+              ))));
+    }
+
+    String hours = ItemListBloc.elapsedToHours(_item);
+    if (hours != null) {
+      baseline += 16.0;
+      w.add(Baseline(
+          baseline: baseline,
+          baselineType: TextBaseline.alphabetic,
+          child: Text(hours,
+              style: TextStyle(
+                fontSize: 12.0,
+                fontWeight: FontWeight.w500,
+                color: Color(0xc0ffffff),
+              ))));
+    }
+
+    return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: Stack(children: w));
   }
+}
+
+bool _validString(String s) {
+  return s != null && s.isNotEmpty;
 }
