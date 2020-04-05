@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:collection';
+import 'dart:math';
 import 'package:elapsed_time/model/elapsed_item.dart';
 import 'package:uuid/uuid.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,6 +14,7 @@ class DataStorage {
   SharedPreferences _prefs;
 
   DataStorage() {
+    // _testLoadRandomItems();
     _loadData();
   }
 
@@ -51,5 +53,27 @@ class DataStorage {
     List<ElapsedItem> list = _data.values.toList(growable: false);
     list.sort((a, b) => a.instant.compareTo(b.instant));
     return list;
+  }
+
+  void _testLoadRandomItems() {
+    Random r = Random();
+    const String chars = "qazwsxedcrfvtgbyhnujmikolp1234567890 ";
+    String randomString(int length) {
+      StringBuffer sb = StringBuffer();
+      for (int i = 0; i < length; i++) {
+        sb.write(chars[r.nextInt(chars.length)]);
+      }
+      return sb.toString();
+    }
+
+    for (int i = 0; i < 100; i++) {
+      ElapsedItem item = ElapsedItem(
+          Uuid().v4(),
+          randomString(10),
+          randomString(100),
+          DateTime.now().add(Duration(days: r.nextInt(365 * 2) - 365)),
+          DateTime.now());
+      _data[item.id] = item;
+    }
   }
 }
