@@ -1,11 +1,11 @@
 {
-    "name": "elapsed_time",
-    "short_name": "elapsed_time",
+    "name": "How long until...",
+    "short_name": "How long until long ago?",
     "start_url": ".",
-    "display": "minimal-ui",
+    "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Present, Past, Future... they're all just numbers to me.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
