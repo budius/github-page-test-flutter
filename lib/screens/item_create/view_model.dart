@@ -29,7 +29,7 @@ class ItemCreateViewModel {
     _updateStreams();
   }
 
-  void _updateStreams({DateTime date, TimeOfDay time}) {
+  void _updateStreams({DateTime? date, TimeOfDay? time}) {
     if (date == null) {
       date = _currentSelection;
     }
@@ -41,11 +41,11 @@ class ItemCreateViewModel {
     _selected.add(_currentSelection);
   }
 
-  void dateSelected(DateTime date) {
+  void dateSelected(DateTime? date) {
     _updateStreams(date: date);
   }
 
-  void timeSelected(TimeOfDay time) {
+  void timeSelected(TimeOfDay? time) {
     _updateStreams(time: time);
   }
 

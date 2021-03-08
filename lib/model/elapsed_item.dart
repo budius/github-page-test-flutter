@@ -3,7 +3,7 @@ import 'dart:convert';
 class ElapsedItem {
   final String _id;
   final String _shortName;
-  final String _description;
+  final String? _description;
   final DateTime _instant;
   final DateTime _created;
 
@@ -14,11 +14,11 @@ class ElapsedItem {
 
   DateTime get createdAt => _created;
 
-  String get description => _description;
+  String? get description => _description;
 
-  String get shortName => _shortName;
+  String? get shortName => _shortName;
 
-  String get id => _id;
+  String? get id => _id;
 
   String toJsonString() {
     return jsonEncode({
@@ -35,7 +35,7 @@ class ElapsedItem {
     return new ElapsedItem(
       map['_id'] as String,
       map['_shortName'] as String,
-      map['_description'] as String,
+      map['_description'] as String?,
       DateTime.fromMillisecondsSinceEpoch((map['_instant'] as int)),
       DateTime.fromMillisecondsSinceEpoch((map['_created'] as int)),
     );

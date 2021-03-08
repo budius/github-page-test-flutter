@@ -47,7 +47,7 @@ class ItemCreateView extends StatelessWidget {
                           stream: viewModel.date,
                           builder: (context, snapshot) {
                             return Text(
-                                snapshot.data == null ? "" : snapshot.data);
+                                snapshot.data == null ? "" : snapshot.data!);
                           }),
                       onPressed: () => _showDatePicker(context),
                     ),
@@ -60,7 +60,7 @@ class ItemCreateView extends StatelessWidget {
                           stream: viewModel.time,
                           builder: (context, snapshot) {
                             return Text(
-                                snapshot.data == null ? "" : snapshot.data);
+                                snapshot.data == null ? "" : snapshot.data!);
                           }),
                       onPressed: () => _showTimePicker(context),
                     ),
@@ -85,7 +85,7 @@ class ItemCreateView extends StatelessWidget {
 void _showDatePicker(BuildContext context) async {
   removeFocus(context);
   ItemCreateViewModel viewModel = _vm(context);
-  DateTime selection = await showDatePicker(
+  DateTime? selection = await showDatePicker(
       context: context,
       initialDate: viewModel.initialDate,
       firstDate: viewModel.earliestDate,
@@ -97,7 +97,7 @@ void _showDatePicker(BuildContext context) async {
 void _showTimePicker(BuildContext context) async {
   removeFocus(context);
   ItemCreateViewModel viewModel = _vm(context);
-  TimeOfDay selection =
+  TimeOfDay? selection =
       await showTimePicker(context: context, initialTime: viewModel.initialTime);
   viewModel.timeSelected(selection);
 }

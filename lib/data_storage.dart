@@ -9,9 +9,9 @@ class DataStorage {
   // should I still keep the local backing of pre-parsed data?
   // it would takes longer to call `allItems` but using less memory.
   // one day I'll profile that
-  final Map<String, ElapsedItem> _data = HashMap();
+  final Map<String?, ElapsedItem> _data = HashMap();
   Completer<void> _loadCompleted = Completer<void>();
-  SharedPreferences _prefs;
+  late SharedPreferences _prefs;
 
   DataStorage() {
     // _testLoadRandomItems();
@@ -21,7 +21,7 @@ class DataStorage {
   void _loadData() async {
     _prefs = await SharedPreferences.getInstance();
     for (String key in _prefs.getKeys()) {
-      _data[key] = ElapsedItem.fromJsonString(_prefs.getString(key));
+      _data[key] = ElapsedItem.fromJsonString(_prefs.getString(key)!);
     }
     _loadCompleted.complete();
   }
@@ -37,7 +37,7 @@ class DataStorage {
     return newItem;
   }
 
-  Future<ElapsedItem> getItem(String id) async {
+  Future<ElapsedItem?> getItem(String id) async {
     await _loadCompleted.future;
     return _data[id];
   }

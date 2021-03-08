@@ -15,7 +15,7 @@ class ItemListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: buildAppBar(context) as PreferredSizeWidget?,
       floatingActionButton: buildFab(context),
       body: buildList(context),
     );
@@ -33,7 +33,7 @@ Widget buildFab(BuildContext context) {
             context: context,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-            builder: routesDefinition[Routes.create]);
+            builder: routesDefinition[Routes.create]!);
         _vm(context).update();
       },
       tooltip: 'Add new item',
@@ -45,11 +45,11 @@ Widget buildList(BuildContext context) {
   return StreamBuilder<List<ElapsedItem>>(
     stream: viewModel.items,
     builder: (context, snapshot) {
-      int count = snapshot.data != null ? snapshot.data.length : 0;
+      int count = snapshot.data != null ? snapshot.data!.length : 0;
       if (count == 0) {
         return buildEmptyView(context);
       } else {
-        return buildListFromItems(context, snapshot.data, viewModel);
+        return buildListFromItems(context, snapshot.data!, viewModel);
       }
     },
   );

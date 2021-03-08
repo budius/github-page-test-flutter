@@ -8,7 +8,7 @@ class CardItem extends StatelessWidget {
   final ElapsedItem _item;
   final Function onTap;
 
-  const CardItem(this._item, this.onTap, {Key key}) : super(key: key);
+  const CardItem(this._item, this.onTap, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class CardItem extends StatelessWidget {
                 top: 16,
                 right: 16,
                 child: InkResponse(
-                  onTap: onTap,
+                  onTap: onTap as void Function()?,
                   child: Icon(Icons.close),
                 )),
             AutoUpdateList(_item),
@@ -46,7 +46,7 @@ class AutoUpdateList extends StatefulWidget {
 
 class AutoUpdateListState extends State<AutoUpdateList> {
   final ElapsedItem _item;
-  Timer _timer;
+  Timer? _timer;
 
   AutoUpdateListState(this._item);
 
@@ -60,7 +60,7 @@ class AutoUpdateListState extends State<AutoUpdateList> {
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer!.cancel();
     _timer = null;
     super.dispose();
   }
@@ -71,7 +71,7 @@ class AutoUpdateListState extends State<AutoUpdateList> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> w = List();
+    List<Widget> w = List.empty(growable: true);
 
     double baseline = 40.0;
 
@@ -79,7 +79,7 @@ class AutoUpdateListState extends State<AutoUpdateList> {
     w.add(Baseline(
         baseline: baseline,
         baselineType: TextBaseline.alphabetic,
-        child: Text(_item.shortName,
+        child: Text(_item.shortName!,
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.w600,
@@ -92,7 +92,7 @@ class AutoUpdateListState extends State<AutoUpdateList> {
       w.add(Baseline(
           baseline: baseline,
           baselineType: TextBaseline.alphabetic,
-          child: Text(_item.description,
+          child: Text(_item.description!,
               style: TextStyle(
                 fontSize: 14.0,
                 fontWeight: FontWeight.w600,
@@ -102,7 +102,7 @@ class AutoUpdateListState extends State<AutoUpdateList> {
       baseline += 8.0;
     }
 
-    String years = ItemListViewModel.elapsedToYears(_item);
+    String? years = ItemListViewModel.elapsedToYears(_item);
     if (years != null) {
       baseline += 16.0;
       w.add(Baseline(
@@ -116,7 +116,7 @@ class AutoUpdateListState extends State<AutoUpdateList> {
               ))));
     }
 
-    String days = ItemListViewModel.elapsedToDays(_item);
+    String? days = ItemListViewModel.elapsedToDays(_item);
     if (days != null) {
       baseline += 16.0;
       w.add(Baseline(
@@ -150,6 +150,6 @@ class AutoUpdateListState extends State<AutoUpdateList> {
   }
 }
 
-bool _validString(String s) {
+bool _validString(String? s) {
   return s != null && s.isNotEmpty;
 }

@@ -24,7 +24,7 @@ class ItemListViewModel {
     return "${item.instant.difference(DateTime.now()).inMilliseconds}";
   }
 
-  static String elapsedToYears(ElapsedItem item) {
+  static String? elapsedToYears(ElapsedItem item) {
     Duration diff = DateTime.now().difference(item.instant);
     if (diff.inDays.abs() > 365) {
       int years = diff.inDays ~/ 365;
@@ -35,7 +35,7 @@ class ItemListViewModel {
     }
   }
 
-  static String elapsedToDays(ElapsedItem item) {
+  static String? elapsedToDays(ElapsedItem item) {
     Duration diff = DateTime.now().difference(item.instant);
     if (diff.inDays.abs() > 0) {
       int days = diff.inDays;
@@ -68,7 +68,7 @@ class ItemListViewModel {
   }
 
   void remove(ElapsedItem item) async {
-    await _dataStorage.deleteItem(item.id);
+    await _dataStorage.deleteItem(item.id!);
     update();
   }
 }
