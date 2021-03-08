@@ -1,1 +1,0 @@
-flutter run --dart-define=FLUTTER_WEB_USE_SKIA=false --release
