@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:elapsed_time/screens/item_create/bloc.dart';
+import 'package:elapsed_time/screens/item_create/view_model.dart';
 import 'package:elapsed_time/screens/item_create/view.dart';
-import 'package:elapsed_time/screens/item_list/bloc.dart';
+import 'package:elapsed_time/screens/item_list/view_model.dart';
 import 'package:elapsed_time/screens/item_list/view.dart';
 
-import 'package:elapsed_time/model_provider.dart';
+import 'package:provider/provider.dart';
 
 class Routes {
   static String home = '/';
@@ -13,10 +13,14 @@ class Routes {
 }
 
 Map<String, WidgetBuilder> routesDefinition = {
-  Routes.home: (context) =>
-      ModelProvider<ItemListBloc>(model: ItemListBloc(), view: ItemListView()),
-  Routes.create: (context) => ModelProvider<ItemCreateBloc>(
-        model: ItemCreateBloc(),
-        view: ItemCreateView(),
+  Routes.home: (context) => Provider<ItemListViewModel>(
+        create: (_) => ItemListViewModel(),
+        dispose: (_, value) => value.onDispose(),
+        child: ItemListView(),
+      ),
+  Routes.create: (context) => Provider<ItemCreateViewModel>(
+        create: (_) => ItemCreateViewModel(),
+        dispose: (_, value) => value.onDispose(),
+        child: ItemCreateView(),
       ),
 };

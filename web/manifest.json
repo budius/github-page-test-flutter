@@ -2,7 +2,7 @@
     "name": "elapsed_time",
     "short_name": "elapsed_time",
     "start_url": ".",
-    "display": "minimal-ui",
+    "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
     "description": "A new Flutter project.",

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:elapsed_time/model/elapsed_item.dart';
-import 'package:elapsed_time/screens/item_list/bloc.dart';
+import 'package:elapsed_time/screens/item_list/view_model.dart';
 import 'package:flutter/material.dart';
 
 class CardItem extends StatelessWidget {
@@ -102,7 +102,7 @@ class AutoUpdateListState extends State<AutoUpdateList> {
       baseline += 8.0;
     }
 
-    String years = ItemListBloc.elapsedToYears(_item);
+    String years = ItemListViewModel.elapsedToYears(_item);
     if (years != null) {
       baseline += 16.0;
       w.add(Baseline(
@@ -116,7 +116,7 @@ class AutoUpdateListState extends State<AutoUpdateList> {
               ))));
     }
 
-    String days = ItemListBloc.elapsedToDays(_item);
+    String days = ItemListViewModel.elapsedToDays(_item);
     if (days != null) {
       baseline += 16.0;
       w.add(Baseline(
@@ -130,7 +130,7 @@ class AutoUpdateListState extends State<AutoUpdateList> {
               ))));
     }
 
-    String hours = ItemListBloc.elapsedToHours(_item);
+    String hours = ItemListViewModel.elapsedToHours(_item);
     if (hours != null) {
       baseline += 16.0;
       w.add(Baseline(

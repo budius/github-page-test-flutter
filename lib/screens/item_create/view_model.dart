@@ -1,10 +1,9 @@
 import 'package:elapsed_time/data_storage.dart';
-import 'package:elapsed_time/model_provider.dart';
 import 'package:elapsed_time/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 
-class ItemCreateBloc extends ViewModel {
+class ItemCreateViewModel {
   DateTime get earliestDate => DateTime.fromMillisecondsSinceEpoch(0);
 
   DateTime get latestDate => DateTime.now().add(Duration(days: 36500));
@@ -26,7 +25,7 @@ class ItemCreateBloc extends ViewModel {
 
   DateTime _currentSelection = DateTime.now();
 
-  ItemCreateBloc() {
+  ItemCreateViewModel() {
     _updateStreams();
   }
 
@@ -56,11 +55,9 @@ class ItemCreateBloc extends ViewModel {
         nameController.text, descriptionController.text, _currentSelection);
   }
 
-  @override
   void onDispose() {
     nameController.dispose();
     descriptionController.dispose();
     _selected.close();
-    super.onDispose();
   }
 }
